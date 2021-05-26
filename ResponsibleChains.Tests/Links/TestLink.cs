@@ -9,6 +9,7 @@
             _nextLink = nextLink;
         }
 
+        public ITestLink Next => _nextLink;
         public int ListensFor { get; set; }
         public int RespondsWith { get; set; }
 

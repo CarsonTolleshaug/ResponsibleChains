@@ -2,7 +2,7 @@
 {
     public class TestEndLink : ITestLink
     {
-        public int RespondsWith { get; set; }
+        public int RespondsWith { get; set; } = 1337;
 
         public int Result(int input)
         {
