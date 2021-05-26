@@ -6,23 +6,26 @@ namespace ResponsibleChains
 {
     public interface IResponsibleChainBuilder<T> where T : class
     {
-        IResponsibleChainBuilder<T> WithLink<TLink>();
+        IResponsibleChainBuilder<T> WithLink<TLink>() where TLink : T;
         IResponsibleChainBuilder<T> WithLink(Type type);
         IResponsibleChainBuilder<T> WithLinks(IEnumerable<Type> types);
+        T Build();
     }
 
     public class ResponsibleChainBuilder<T> : IResponsibleChainBuilder<T> where T : class
     {
         private readonly Stack<Type> _chainLinks;
-        private readonly IServiceProvider _serviceProvider;
+        private readonly IServiceCollection _serviceCollection;
 
-        public ResponsibleChainBuilder(IServiceProvider serviceProvider)
+        public ResponsibleChainBuilder() : this(new ServiceCollection()) { }
+
+        public ResponsibleChainBuilder(IServiceCollection serviceCollection) 
         {
             _chainLinks = new Stack<Type>();
-            _serviceProvider = serviceProvider;
+            _serviceCollection = serviceCollection;
         }
 
-        public IResponsibleChainBuilder<T> WithLink<TLink>()
+        public IResponsibleChainBuilder<T> WithLink<TLink>() where TLink : T
         {
             return WithLink(typeof(TLink));
         }
