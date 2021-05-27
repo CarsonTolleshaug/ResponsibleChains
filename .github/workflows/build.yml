@@ -26,6 +26,6 @@ jobs:
     - name: Test
       run: dotnet test -c Release --no-build --verbosity normal
     - name: Pack
-      run: dotnet pack -c Release --no-build -p:Version=${{ format('{0}.{1}.{2}{3}', env.MAJOR_VERSION, env.MINOR_VERSION, env.GITHUB_RUN_NUMBER, '-beta') }}
+      run: dotnet pack -c Release --no-build -p:Version=${{ format('{0}.{1}.{2}{3}', env.MAJOR_VERSION, env.MINOR_VERSION, github.run_number, github.ref != 'refs/heads/main' && '-beta' || '') }}
     - name: Publish
       run: dotnet nuget push ResponsibleChains/bin/Release/*.nupkg --source 'https://api.nuget.org/v3/index.json' --api-key ${{ secrets.NUGET_KEY }} --skip-duplicate
