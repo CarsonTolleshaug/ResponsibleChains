@@ -13,8 +13,6 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      VERSION: '${{ env.MAJOR_VERSION }}.${{ env.MINOR_VERSION }}.${{ env.GITHUB_RUN_ID }}'
     steps:
     - uses: actions/checkout@v2
     - name: Setup .NET
@@ -28,6 +26,6 @@ jobs:
     - name: Test
       run: dotnet test -c Release --no-build --verbosity normal
     - name: Pack
-      run: dotnet pack -c Release --no-build -p:Version=$VERSION
+      run: dotnet pack -c Release --no-build -p:Version=$MAJOR_VERSION.$MINOR_VERSION.$GITHUB_RUN_ID
     - name: Publish
-      run: dotnet nuget push bin\Release\ResponsibleChains.$VERSION.nupkg --api-key $NUGET_KEY --source https://api.nuget.org/v3/index.json --skip-duplicate
+      run: dotnet nuget push bin\Release\*.nupkg --api-key $NUGET_KEY --source https://api.nuget.org/v3/index.json --skip-duplicate
