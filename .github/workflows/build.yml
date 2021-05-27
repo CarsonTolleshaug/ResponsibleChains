@@ -9,13 +9,12 @@ on:
 env:
   MAJOR_VERSION: 0
   MINOR_VERSION: 1
-  VERSION: '${{ env.MAJOR_VERSION }}.${{ env.MINOR_VERSION }}.${{ env.GITHUB_RUN_ID }}'
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
+    env:
+      VERSION: '${{ env.MAJOR_VERSION }}.${{ env.MINOR_VERSION }}.${{ env.GITHUB_RUN_ID }}'
     steps:
     - uses: actions/checkout@v2
     - name: Setup .NET
