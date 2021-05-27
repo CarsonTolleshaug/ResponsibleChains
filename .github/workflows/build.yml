@@ -9,7 +9,7 @@ on:
 env:
   MAJOR_VERSION: 0
   MINOR_VERSION: 1
-  VERSION: ${MAJOR_VERSION}.${MINOR_VERSION}.${GITHUB_RUN_ID}
+  VERSION: '${{ env.MAJOR_VERSION }}.${{ env.MINOR_VERSION }}.${{ env.GITHUB_RUN_ID }}'
 
 jobs:
   build:
@@ -29,6 +29,6 @@ jobs:
     - name: Test
       run: dotnet test -c Release --no-build --verbosity normal
     - name: Pack
-      run: dotnet pack -c Release --no-build -p:Version=${VERSION}
+      run: dotnet pack -c Release --no-build -p:Version=$VERSION
     - name: Publish
-      run: dotnet nuget push bin\Release\ResponsibleChains.${VERSION}.nupkg --api-key ${NUGET_KEY} --source https://api.nuget.org/v3/index.json --skip-duplicate
+      run: dotnet nuget push bin\Release\ResponsibleChains.$VERSION.nupkg --api-key $NUGET_KEY --source https://api.nuget.org/v3/index.json --skip-duplicate
