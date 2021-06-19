@@ -90,7 +90,7 @@ namespace ResponsibleChains
             {
                 if (parameterInfo.ParameterType == typeof(T))
                 {
-                    return nextLink;
+                    return nextLink ?? throw new ArgumentException($"Final link of type '{linkType.FullName}' expects next link in constructor, but no link was provided."); ;
                 }
 
                 return _serviceProvider.Value.GetRequiredService(parameterInfo.ParameterType);

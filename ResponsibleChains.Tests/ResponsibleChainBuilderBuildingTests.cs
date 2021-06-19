@@ -108,5 +108,21 @@ namespace ResponsibleChains.Tests
             // Assert
             Act.Should().Throw<ArgumentException>().WithMessage($"Multiple public constructors found for type '{typeof(TestLinkWithMultiplePublicConstructors).FullName}'.");
         }
+
+        [Test]
+        public void GivenLinkHasNoEndLink_ShouldThrowException()
+        {
+            // Arrange
+            IResponsibleChainBuilder<ITestLink> responsibleChainBuilder = new ResponsibleChainBuilder<ITestLink>();
+
+            // Act
+            responsibleChainBuilder
+                .WithLink<TestLink>();
+
+            Action Act = () => responsibleChainBuilder.Build();
+
+            // Assert
+            Act.Should().Throw<ArgumentException>().WithMessage($"Final link of type '{typeof(TestLink).FullName}' expects next link in constructor, but no link was provided.");
+        }
     }
 }
