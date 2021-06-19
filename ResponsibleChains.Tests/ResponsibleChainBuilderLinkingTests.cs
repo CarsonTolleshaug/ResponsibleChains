@@ -72,6 +72,7 @@ namespace ResponsibleChains.Tests
                     RespondsWith = 200
                 })
                 .WithLink(typeof(TestLinkWithPrivateConstructor))
+                .WithLink<TestEndLink>()
                 .Build();
 
             // Assert

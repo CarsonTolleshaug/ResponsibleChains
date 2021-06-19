@@ -1,12 +1,28 @@
-﻿using System;
+﻿using ResponsibleChains;
+using ChainLinks;
 
 namespace Console
 {
-    class Program
+    public static class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            if (args.Length == 0 || !int.TryParse(args[0], out int input) || input < 0)
+            {
+                System.Console.WriteLine("Please provide a positive integer as an argument.");
+                return;
+            }
+
+            IFizzBuzzChain chain = new ResponsibleChainBuilder<IFizzBuzzChain>()
+                .WithLink<FizzBuzzLink>()
+                .WithLink<FizzLink>()
+                .WithLink<BuzzLink>()
+                .WithLink<DefaultLink>()
+                .Build();
+
+            string output = chain.Execute(input);
+
+            System.Console.WriteLine(output);
         }
     }
 }
