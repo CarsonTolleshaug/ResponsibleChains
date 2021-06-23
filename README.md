@@ -73,10 +73,10 @@ public class MyFirstLink : IMyChain
     {
         if (input == "foo")
         {
-            return "bar"
+            return "bar";
         }
 
-        return _nextLink.DoSomething(input)
+        return _nextLink.DoSomething(input);
     }
 }
 ```
@@ -142,7 +142,7 @@ Answer: No, you can make your own interface or base class.
 ```c#
 IMyChain chain = new DefaultLink(
                     new MySecondLink(
-                        new MyFirstLink(new MyOtherDependency())))
+                        new MyFirstLink(new MyOtherDependency())));
 ```
 
 Answer: 
