@@ -7,7 +7,7 @@
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/CarsonTolleshaug/ResponsibleChains</PackageProjectUrl>
     <PackageIcon>logo.png</PackageIcon>
-    <PackageTags>c# chain chains of responsibility responsible pattern OOP</PackageTags>
+    <PackageTags>chain chains of responsibility responsible pattern OOP c#</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
