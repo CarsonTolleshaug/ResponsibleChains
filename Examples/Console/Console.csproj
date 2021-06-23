@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="ResponsibleChains" Version="0.1.13" />
+    <PackageReference Include="ResponsibleChains" Version="1.0.15" />
   </ItemGroup>
 
   <ItemGroup>
