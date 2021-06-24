@@ -2,9 +2,19 @@ name: Build and Release
 
 on:
   push:
-    branches: [ main ]
+    branches:
+    - main
+    paths-ignore:
+    - 'Examples/**'
+    - README.md
+    - .gitignore
   pull_request:
-    branches: [ main ]
+    branches: 
+    - main
+    paths-ignore:
+    - 'Examples/**'
+    - README.md
+    - .gitignore
 
 env:
   MAJOR_VERSION: 1
