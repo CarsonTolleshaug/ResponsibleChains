@@ -5,7 +5,7 @@
 [![NuGet](https://img.shields.io/nuget/v/ResponsibleChains.svg)](https://nuget.org/packages/ResponsibleChains) 
 [![Nuget](https://img.shields.io/nuget/dt/ResponsibleChains.svg)](https://nuget.org/packages/ResponsibleChains)
 
-![Logo](./Logo/logo.png)
+![](./Logo/logo.png)
 
 This library can help you instantiate a chain of responsibility pattern in a number of convenient ways. 
 See [this Wikipedia entry](https://en.wikipedia.org/wiki/Chain-of-responsibility_pattern) for an 
